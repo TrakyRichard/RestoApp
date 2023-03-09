@@ -1,7 +1,7 @@
-name: dishes
-description: A new Flutter package project.
+name: das
+description: A data access service package
 version: 0.0.1
-homepage:
+publish_to: none
 
 environment:
   sdk: '>=2.19.2 <3.0.0'

@@ -1,0 +1,85 @@
+{
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "restaurant",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "restaurant (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "restaurant (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "commons",
+            "cwd": "packages/commons",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "commons (profile mode)",
+            "cwd": "packages/commons",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "commons (release mode)",
+            "cwd": "packages/commons",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "das",
+            "cwd": "packages/das",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "das (profile mode)",
+            "cwd": "packages/das",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "das (release mode)",
+            "cwd": "packages/das",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "dishes",
+            "cwd": "packages/dishes",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dishes (profile mode)",
+            "cwd": "packages/dishes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dishes (release mode)",
+            "cwd": "packages/dishes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

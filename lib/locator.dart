@@ -7,6 +7,6 @@ GetIt locator = GetIt.instance;
 
 Future<void> setUpLocator() async {
   locator.registerLazySingleton<NavigationService>(() => NavigationService());
-  locator.registerSingleton<DishRepository>(DishRepository());
-  locator.registerSingleton<CrudDAS>(ApiService());
+  locator.registerLazySingleton<CrudDAS>(() => ApiService());
+  locator.registerLazySingleton<DishRepository>(() => DishRepository());
 }

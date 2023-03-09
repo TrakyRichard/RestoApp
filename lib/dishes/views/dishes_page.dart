@@ -1,3 +1,4 @@
+import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
 
 class DishesPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class DishesPage extends StatefulWidget {
 class _DishesPageState extends State<DishesPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: appbar(title: "Dishes", automaticallyImplyLeading: false),
+    );
   }
 }

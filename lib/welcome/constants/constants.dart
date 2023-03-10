@@ -2,8 +2,8 @@ import '../models/welcome.dart';
 
 List<WelcomeModel> onBoardingSteps = [
   WelcomeModel(
-      title: 'your favorite dish',
-      description: 'Choose from thousands of restaurants near you',
+      title: 'Your favorite dish',
+      description: 'Choose from thousands of dishes near you',
       svg: 'assets/svgs/cooking.svg'),
   WelcomeModel(
       title: 'Order and enjoy',

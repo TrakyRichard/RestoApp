@@ -150,7 +150,6 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                                         theme.textTheme.headlineSmall?.copyWith(
                                       fontSize: 20.sp,
                                     )),
-                                SizedBox(height: 10.h),
                                 Text("\$${state.dish.price}",
                                     style:
                                         theme.textTheme.headlineSmall?.copyWith(
@@ -163,7 +162,6 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                                         theme.textTheme.headlineSmall?.copyWith(
                                       fontSize: 16.sp,
                                     )),
-                                SizedBox(height: 10.h),
                                 Text(state.dish.ingredients.join(", "),
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       fontSize: 16.sp,
@@ -174,7 +172,6 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                                         theme.textTheme.headlineSmall?.copyWith(
                                       fontSize: 16.sp,
                                     )),
-                                SizedBox(height: 10.h),
                                 Text(state.dish.description,
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       fontSize: 16.sp,
@@ -226,9 +223,34 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                                         theme.textTheme.headlineSmall?.copyWith(
                                       fontSize: 16.sp,
                                     )),
-                                SizedBox(height: 10.h),
                                 Text(
                                     "${state.dish.timeToWait.isEmpty ? 0 : state.dish.timeToWait} minutes",
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
+                                SizedBox(height: 10.h),
+                                Text("Status: ",
+                                    style:
+                                        theme.textTheme.headlineSmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
+                                Text(
+                                    state.dish.isAvailable
+                                        ? "Available"
+                                        : "Unavailable",
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
+                                SizedBox(height: 10.h),
+                                Text("Featured: ",
+                                    style:
+                                        theme.textTheme.headlineSmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
+                                Text(
+                                    state.dish.featured
+                                        ? "Is Featured"
+                                        : "Not Featured",
                                     style: theme.textTheme.bodySmall?.copyWith(
                                       fontSize: 16.sp,
                                     )),

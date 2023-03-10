@@ -105,7 +105,7 @@ ThemeData lightTheme() {
         return null;
       }),
     ),
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green)
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange)
         .copyWith(secondary: kAccentColor)
         .copyWith(background: Colors.white)
         .copyWith(secondary: kAccentColor),

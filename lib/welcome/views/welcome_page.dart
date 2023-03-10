@@ -66,9 +66,9 @@ class _WelcomePageState extends State<WelcomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
-                                    child: Container(
+                                    child: SizedBox(
                                         height: 300.0.h,
-                                        width: double.infinity,
+                                        width: size.width * 0.8.h,
                                         child: SvgPicture.asset(
                                             onBoardingSteps[index].svg)),
                                   ),
@@ -122,6 +122,7 @@ class _WelcomePageState extends State<WelcomePage> {
               context.watch<WelcomeCubit>().state.page == 2
                   ? Container(
                       margin: EdgeInsets.only(bottom: 16.0.h),
+                      height: 50.0.h,
                       width: size.width * 0.8,
                       child: elevatedButton(
                           theme: themeData,
@@ -129,9 +130,10 @@ class _WelcomePageState extends State<WelcomePage> {
                             locator<NavigationService>()
                                 .navigateTo(DishesPage.routeName);
                           },
-                          label: 'Commencer'))
+                          label: 'Start'))
                   : Container(
                       margin: const EdgeInsets.only(bottom: 16.0),
+                      height: 50.0.h,
                       width: size.width * 0.8,
                       child: elevatedButton(
                           theme: themeData,

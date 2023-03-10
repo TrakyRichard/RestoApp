@@ -59,6 +59,9 @@ class _EditDishPageState extends State<EditDishPage> {
           if (state.isSuccess) {
             context.read<DishBloc>().add(LoadDishesByCategoryEvent(
                 category: context.read<DishBloc>().state.category));
+            context
+                .read<EditDishBloc>()
+                .add(InitEditDishEvent(dish: initDishModel));
           }
         },
         child: BlocBuilder<EditDishBloc, EditDishState>(

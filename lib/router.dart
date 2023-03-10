@@ -14,6 +14,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case EditDishPage.routeName:
       final args = settings.arguments as EditDishPageArguments;
       return _getPageRoute(EditDishPage(args: args), settings);
+    case AllDishesPage.routeName:
+      return _getPageRoute(const AllDishesPage(), settings);
     default:
       return noRouteDefinedPage(settings);
   }

@@ -59,6 +59,16 @@ class MyApp extends StatelessWidget {
         BlocProvider<DishBloc>(
           create: (context) => DishBloc(),
         ),
+        BlocProvider<FirstLoadCubit>(
+          create: (context) {
+            var isOldUser = locator<LocalStorageService>().isOldUser;
+            if (isOldUser) {
+              context.read<FirstLoadCubit>().setUserInPreference();
+            }
+            return FirstLoadCubit(
+                firstLoadState: FirstLoadState(isOldUser: isOldUser));
+          },
+        ),
         BlocProvider<EditDishBloc>(create: (context) => EditDishBloc()),
         BlocProvider(
           create: (context) {
@@ -92,21 +102,27 @@ class RestoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (_, state) {
-        return ScreenUtilInit(
-          designSize: const Size(390, 844), // based on Iphone 12 Pro
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return MaterialApp(
-              title: 'Dishes App',
-              builder: EasyLoading.init(),
-              debugShowCheckedModeBanner: false,
-              theme: Theme.of(context).brightness == Brightness.dark
-                  ? darkTheme()
-                  : lightTheme(),
-              onGenerateRoute: generateRoute,
-              navigatorKey: locator<NavigationService>().navigationKey,
-              home: const WelcomePage(),
+        return BlocBuilder<FirstLoadCubit, FirstLoadState>(
+          builder: (context, firstLoadState) {
+            return ScreenUtilInit(
+              designSize: const Size(390, 844), // based on Iphone 12 Pro
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (context, child) {
+                return MaterialApp(
+                  title: 'Dishes App',
+                  builder: EasyLoading.init(),
+                  debugShowCheckedModeBanner: false,
+                  theme: Theme.of(context).brightness == Brightness.dark
+                      ? darkTheme()
+                      : lightTheme(),
+                  onGenerateRoute: generateRoute,
+                  navigatorKey: locator<NavigationService>().navigationKey,
+                  home: firstLoadState.isOldUser
+                      ? const DishesPage()
+                      : const WelcomePage(),
+                );
+              },
             );
           },
         );

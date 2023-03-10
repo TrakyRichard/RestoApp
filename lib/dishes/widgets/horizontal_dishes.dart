@@ -2,6 +2,7 @@ import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restaurant/locator.dart';
 
 import '../dishes.dart';
 import 'dish.dart';
@@ -58,13 +59,17 @@ class _HorizontalDishesState extends State<HorizontalDishes> {
                               style: theme.textTheme.bodyLarge,
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(right: 10.w),
-                            child: Text(
-                              "See all",
-                              style: theme.textTheme.headlineSmall?.copyWith(
-                                fontSize: 16.sp,
-                                color: theme.colorScheme.secondary,
+                          GestureDetector(
+                            onTap: () => locator<NavigationService>()
+                                .navigateTo(AllDishesPage.routeName),
+                            child: Container(
+                              margin: EdgeInsets.only(right: 10.w),
+                              child: Text(
+                                "See all",
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  fontSize: 16.sp,
+                                  color: theme.colorScheme.secondary,
+                                ),
                               ),
                             ),
                           ),

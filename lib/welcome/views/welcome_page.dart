@@ -127,6 +127,9 @@ class _WelcomePageState extends State<WelcomePage> {
                       child: elevatedButton(
                           theme: themeData,
                           onPressed: () {
+                            context
+                                .read<FirstLoadCubit>()
+                                .setUserInPreference();
                             locator<NavigationService>()
                                 .navigateTo(DishesPage.routeName);
                           },

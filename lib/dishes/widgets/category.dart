@@ -15,7 +15,7 @@ class Category extends StatelessWidget {
     return BlocBuilder<DishBloc, DishState>(
       builder: (context, state) {
         return Container(
-          width: 150.w,
+          width: 180.w,
           height: 100.h,
           margin: EdgeInsets.only(right: 10.w),
           child: ClipRRect(

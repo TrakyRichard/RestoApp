@@ -60,7 +60,7 @@ router.put("/dishes", (req, res) => {
     let dish = req.body,
       status = "OK";
 
-    if (!dish._id.isEmpty) {
+    if (!dish._id) {
       //
       dish._id = uuid();
       dish._Created = new Date();

@@ -7,9 +7,13 @@ class LocalStorageService {
   static LocalStorageService? _instance;
   static SharedPreferences? _preferences;
   static const String themeModeKey = 'themeMode';
+  static const String isOldUserKey = 'isOldUser';
 
   ThemeMode get themeMode => _getThemeModeFromDisk(themeModeKey);
   set themeMode(ThemeMode value) => _saveThemeModeToDisk(themeModeKey, value);
+  bool get isOldUser => _getIsOldUserFromDisk(isOldUserKey);
+
+  set isOldUser(bool value) => _saveIsOldUserToDisk(isOldUserKey, value);
 
   ThemeMode _getThemeModeFromDisk(String key) {
     var value = _preferences?.getString(key);
@@ -29,5 +33,13 @@ class LocalStorageService {
 
     _preferences ??= await SharedPreferences.getInstance();
     return _instance!;
+  }
+
+  _getIsOldUserFromDisk(String isOldUserKey) {
+    return _preferences?.getBool(isOldUserKey) ?? false;
+  }
+
+  _saveIsOldUserToDisk(String isOldUserKey, bool value) {
+    _preferences!.setBool(isOldUserKey, value);
   }
 }

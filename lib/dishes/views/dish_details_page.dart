@@ -131,7 +131,11 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                                         return PopupMenuItem<String>(
                                           value: choice,
                                           child: Text(
-                                              '${mapValueAndChoise[choice]}'),
+                                              '${mapValueAndChoise[choice]}',
+                                              style: theme.textTheme.bodySmall
+                                                  ?.copyWith(
+                                                      color: Colors.white,
+                                                      fontSize: 16.sp)),
                                         );
                                       }).toList();
                                     },

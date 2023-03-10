@@ -27,9 +27,9 @@ class DishRepository {
 
   saveDish(DishModel dish) async {
     final apiService = locator<ApiService>();
-    return await apiService
-        .save(dish.toJson(), AppUrl.dishesEndpoint)
-        .then((value) {
+    final data = dish.toJson();
+    data.remove("id");
+    return await apiService.save(data, AppUrl.dishesEndpoint).then((value) {
       return value;
     }).catchError((e) {
       throw e.message;
@@ -38,9 +38,10 @@ class DishRepository {
 
   updateDish(DishModel dish) async {
     final apiService = locator<ApiService>();
-    return await apiService
-        .update(dish.toJson(), AppUrl.dishesEndpoint)
-        .then((value) {
+    final data = dish.toJson();
+    data.addEntries([MapEntry("_id", dish.id)]);
+    data.remove("id");
+    return await apiService.update(data, AppUrl.dishesEndpoint).then((value) {
       return value;
     }).catchError((e) {
       throw e.message;

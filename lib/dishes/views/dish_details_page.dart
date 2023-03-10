@@ -90,21 +90,52 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                               top: 10,
                               right: 0,
                               child: Container(
-                                margin: EdgeInsets.only(right: 10.w),
-                                width: 40.w,
-                                height: 40.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: theme.colorScheme.background,
-                                ),
-                                alignment: Alignment.bottomCenter,
-                                child: iconButton(
-                                    onPressed: () {},
-                                    icon: Icons.menu,
-                                    activeColor: theme.primaryColor,
-                                    inactiveColor:
-                                        theme.colorScheme.onBackground),
-                              ),
+                                  margin: EdgeInsets.only(right: 10.w),
+                                  width: 40.w,
+                                  height: 40.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: theme.colorScheme.background,
+                                  ),
+                                  alignment: Alignment.bottomCenter,
+                                  child: PopupMenuButton<String>(
+                                    color: theme.primaryColor,
+                                    onSelected: (value) {
+                                      if (value == 'edit') {
+                                        locator<NavigationService>().navigateTo(
+                                            EditDishPage.routeName,
+                                            arguments: EditDishPageArguments(
+                                                isEdit: true,
+                                                dish: state.dish));
+                                      } else if (value == 'delete') {
+                                        isConfirmDialog(
+                                            context: context,
+                                            title: "Delete",
+                                            confirmText: "Yes",
+                                            isConfirmAction: () {
+                                              context.read<DishBloc>().add(
+                                                  DeleteDishEvent(
+                                                      id: state.dish.id));
+                                              locator<NavigationService>()
+                                                  .navigateTo(
+                                                      DishesPage.routeName);
+                                            },
+                                            message:
+                                                "Are you sure you want to delete the dish",
+                                            isBarrierDismiss: true);
+                                      }
+                                    },
+                                    itemBuilder: (BuildContext context) {
+                                      return {'edit', 'delete'}
+                                          .map((String choice) {
+                                        return PopupMenuItem<String>(
+                                          value: choice,
+                                          child: Text(
+                                              '${mapValueAndChoise[choice]}'),
+                                        );
+                                      }).toList();
+                                    },
+                                  )),
                             ),
                           ],
                         ),
@@ -149,6 +180,58 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
                                       fontSize: 16.sp,
                                     )),
                                 SizedBox(height: 10.h),
+                                Text("Hour of availability: ",
+                                    style:
+                                        theme.textTheme.headlineSmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
+                                RichText(
+                                    text: TextSpan(children: [
+                                  TextSpan(
+                                      text: "From: ",
+                                      style:
+                                          theme.textTheme.bodySmall?.copyWith(
+                                        fontSize: 16.sp,
+                                      )),
+                                  TextSpan(
+                                      text: state.dish.startTimeOfAvailability
+                                              .isEmpty
+                                          ? "00:00"
+                                          : state.dish.startTimeOfAvailability,
+                                      style:
+                                          theme.textTheme.bodySmall?.copyWith(
+                                        fontSize: 16.sp,
+                                        color: theme.primaryColor,
+                                      )),
+                                  TextSpan(
+                                      text: " To: ",
+                                      style:
+                                          theme.textTheme.bodySmall?.copyWith(
+                                        fontSize: 16.sp,
+                                      )),
+                                  TextSpan(
+                                      text: state.dish.endTimeOfAvailability
+                                              .isEmpty
+                                          ? "00:00"
+                                          : state.dish.endTimeOfAvailability,
+                                      style:
+                                          theme.textTheme.bodySmall?.copyWith(
+                                        fontSize: 16.sp,
+                                        color: theme.primaryColor,
+                                      )),
+                                ])),
+                                SizedBox(height: 10.h),
+                                Text("Waiting Time: ",
+                                    style:
+                                        theme.textTheme.headlineSmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
+                                SizedBox(height: 10.h),
+                                Text(
+                                    "${state.dish.timeToWait.isEmpty ? 0 : state.dish.timeToWait} minutes",
+                                    style: theme.textTheme.bodySmall?.copyWith(
+                                      fontSize: 16.sp,
+                                    )),
                               ]),
                         ),
                       ]),
@@ -156,4 +239,9 @@ class _DishDetailsPageState extends State<DishDetailsPage> {
       },
     );
   }
+
+  Map<String, String> mapValueAndChoise = {
+    'edit': 'Edit',
+    'delete': 'Delete',
+  };
 }

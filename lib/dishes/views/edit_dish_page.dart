@@ -152,7 +152,7 @@ class _EditDishPageState extends State<EditDishPage> {
                         children: [
                           SizedBox(
                             width: 0.5.sw,
-                            height: 24.h,
+                            height: 50.h,
                             child: GestureDetector(
                               onTap: () {
                                 context.read<EditDishBloc>().add(
@@ -185,7 +185,7 @@ class _EditDishPageState extends State<EditDishPage> {
                           ),
                           SizedBox(
                             width: 0.5.sw,
-                            height: 24.h,
+                            height: 50.h,
                             child: GestureDetector(
                               onTap: () {
                                 context.read<EditDishBloc>().add(
@@ -359,32 +359,55 @@ class _EditDishPageState extends State<EditDishPage> {
                       margin: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 20),
                       child: SubmitButton(
-                        label: "Submit",
+                        label:
+                            widget.args.isEdit == false ? "Submit" : "Update",
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            EasyLoading.show(status: "Saving Dish");
-                            await uploadFiles(state.images).then((value) {
-                              final dish = DishModel(
-                                  id: state.id,
-                                  name: state.name,
-                                  description: state.description,
-                                  images: value,
-                                  ingredients: state.ingredients,
-                                  price: state.price,
-                                  category: state.category,
-                                  label: state.label,
-                                  featured: state.featured,
-                                  startTimeOfAvailability:
-                                      state.startTimeOfAvailability,
-                                  endTimeOfAvailability:
-                                      state.endTimeOfAvailability,
-                                  timeToWait: state.timeToWait,
-                                  isAvailable: state.isAvailable);
-                              context
-                                  .read<DishBloc>()
-                                  .add(AddDishEvent(dish: dish));
-                            });
-                            EasyLoading.dismiss();
+                            if (widget.args.isEdit == false) {
+                              EasyLoading.show(status: "Saving Dish");
+                              await uploadFiles(state.images).then((value) {
+                                final dish = DishModel(
+                                    id: state.id,
+                                    name: state.name,
+                                    description: state.description,
+                                    images: value,
+                                    ingredients: state.ingredients,
+                                    price: state.price,
+                                    category: state.category,
+                                    label: state.label,
+                                    featured: state.featured,
+                                    startTimeOfAvailability:
+                                        _startTimeController.text,
+                                    endTimeOfAvailability:
+                                        _endTimeController.text,
+                                    timeToWait: _timeToWaitController.text,
+                                    isAvailable: state.isAvailable);
+                                context
+                                    .read<DishBloc>()
+                                    .add(AddDishEvent(dish: dish));
+                              });
+                              EasyLoading.dismiss();
+                            } else {
+                              EasyLoading.show(status: "Updating Dish");
+                              context.read<DishBloc>().add(UpdateDishEvent(
+                                  dish: DishModel(
+                                      id: state.id,
+                                      name: state.name,
+                                      description: state.description,
+                                      images: state.imageUrls,
+                                      ingredients: state.ingredients,
+                                      price: state.price,
+                                      category: state.category,
+                                      label: state.label,
+                                      featured: state.featured,
+                                      startTimeOfAvailability:
+                                          _startTimeController.text,
+                                      endTimeOfAvailability:
+                                          _endTimeController.text,
+                                      timeToWait: _timeToWaitController.text,
+                                      isAvailable: state.isAvailable)));
+                            }
+
                             locator<NavigationService>().pop();
                           }
                         },

@@ -8,12 +8,11 @@ Dio.Dio dio() {
 
 class ApiService extends CrudDAS {
   @override
-  Future<dynamic> delete(String id, String endpoint) {
-    dio().delete(endpoint).then((value) {
+  Future<dynamic> delete(String id, String endpoint) async {
+    await dio().delete("$endpoint/$id").then((value) {
       if (value.data["status"] == "OK" && value.data["data"] != null) {
         return value.data["data"];
       }
-      throw value.data["message"];
     }).catchError((e) {
       throw e.message;
     });

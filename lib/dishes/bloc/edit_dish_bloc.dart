@@ -69,7 +69,7 @@ class EditDishBloc extends Bloc<EditDishEvent, EditDishState> {
         id: event.dish.id,
         name: event.dish.name,
         description: event.dish.description,
-        images: [],
+        imageUrls: event.dish.images,
         ingredients: event.dish.ingredients,
         price: event.dish.price,
         category: event.dish.category,

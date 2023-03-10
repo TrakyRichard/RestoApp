@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "818429780923",
+    "firebase_url": "https://login-beec5.firebaseio.com",
+    "project_id": "login-beec5",
+    "storage_bucket": "login-beec5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818429780923:android:4fa92457fbb57f34bdda9e",
+        "android_client_info": {
+          "package_name": "com.sportable.restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818429780923-65ksl4ph92v2t49km8hduov7uhkbfj18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChK-L4-5rx90I0RZlGde_21JhaZJB-Yw0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818429780923-65ksl4ph92v2t49km8hduov7uhkbfj18.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "818429780923-sc6d4gaphaghjip6hk89tgf6c0p2eq9e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ilants.telapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818429780923:android:37c1783f5a7370c3bdda9e",
+        "android_client_info": {
+          "package_name": "com.wtmevent.automl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818429780923-jpi4cdv2hk7bhnn78da0aouah5vbuo95.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wtmevent.automl",
+            "certificate_hash": "b3aab9a3efcd3aed6c5d9e1ac90cf90a7acf094d"
+          }
+        },
+        {
+          "client_id": "818429780923-65ksl4ph92v2t49km8hduov7uhkbfj18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChK-L4-5rx90I0RZlGde_21JhaZJB-Yw0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818429780923-65ksl4ph92v2t49km8hduov7uhkbfj18.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "818429780923-sc6d4gaphaghjip6hk89tgf6c0p2eq9e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ilants.telapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

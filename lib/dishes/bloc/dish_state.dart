@@ -1,7 +1,7 @@
 part of 'dish_bloc.dart';
 
 class DishState extends Equatable {
-  final List<Dish> dishes;
+  final List<DishModel> dishes;
   final bool isLoading;
   final String? error;
   const DishState({
@@ -11,7 +11,7 @@ class DishState extends Equatable {
   });
 
   DishState copyWith({
-    List<Dish>? dishes,
+    List<DishModel>? dishes,
     bool? isLoading,
     String? error,
   }) {

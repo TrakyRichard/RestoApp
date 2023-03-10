@@ -6,47 +6,44 @@ part of 'dish.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Dish _$DishFromJson(Map<String, dynamic> json) => Dish(
-      id: json['id'] as String,
+DishModel _$DishModelFromJson(Map<String, dynamic> json) => DishModel(
+      id: json['_id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      ingredients: (json['ingredients'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       price: json['price'] as String,
-      category: $enumDecode(_$CategoryEnumMap, json['category']),
+      category: $enumDecode(_$CategoryEnumEnumMap, json['category']),
       label: json['label'] as String,
-      featured: json['featured'] as String,
+      featured: json['featured'] as bool,
       startTimeOfAvailability: json['startTimeOfAvailability'] as String,
       endTimeOfAvailability: json['endTimeOfAvailability'] as String,
       timeToWait: json['timeToWait'] as String,
-      status: $enumDecode(_$StatusEnumMap, json['status']),
-      comments: json['comments'] as String,
+      isAvailable: json['isAvailable'] as bool,
     );
 
-Map<String, dynamic> _$DishToJson(Dish instance) => <String, dynamic>{
-      'id': instance.id,
+Map<String, dynamic> _$DishModelToJson(DishModel instance) => <String, dynamic>{
+      '_id': instance.id,
       'name': instance.name,
       'description': instance.description,
       'images': instance.images,
+      'ingredients': instance.ingredients,
       'price': instance.price,
-      'category': _$CategoryEnumMap[instance.category]!,
+      'category': _$CategoryEnumEnumMap[instance.category]!,
       'label': instance.label,
       'featured': instance.featured,
       'startTimeOfAvailability': instance.startTimeOfAvailability,
       'endTimeOfAvailability': instance.endTimeOfAvailability,
       'timeToWait': instance.timeToWait,
-      'status': _$StatusEnumMap[instance.status]!,
-      'comments': instance.comments,
+      'isAvailable': instance.isAvailable,
     };
 
-const _$CategoryEnumMap = {
-  Category.mainCourse: 'MainCourse',
-  Category.appetizers: 'Appetizers',
-  Category.desserts: 'Desserts',
-  Category.additionalDishes: 'Salad',
-};
-
-const _$StatusEnumMap = {
-  Status.activated: 'ativated',
-  Status.desactivated: 'desativated',
+const _$CategoryEnumEnumMap = {
+  CategoryEnum.mainCourse: 'MainCourse',
+  CategoryEnum.appetizers: 'Appetizers',
+  CategoryEnum.desserts: 'Desserts',
+  CategoryEnum.additionalDishes: 'additionalDishes',
 };

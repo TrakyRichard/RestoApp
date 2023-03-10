@@ -8,9 +8,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const WelcomePage(), settings);
     case DishesPage.routeName:
       return _getPageRoute(const DishesPage(), settings);
-    case SingleDishPage.routeName:
-      final args = settings.arguments as SingleDishPageArguments;
-      return _getPageRoute(SingleDishPage(args: args), settings);
+    case DishDetailsPage.routeName:
+      final args = settings.arguments as DishDetailsPageArguments;
+      return _getPageRoute(DishDetailsPage(args: args), settings);
+    case EditDishPage.routeName:
+      final args = settings.arguments as EditDishPageArguments;
+      return _getPageRoute(EditDishPage(args: args), settings);
     default:
       return noRouteDefinedPage(settings);
   }

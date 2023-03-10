@@ -4,37 +4,41 @@ import '../../locator.dart';
 import '../dishes.dart';
 
 class DishRepository {
-  final apiService = locator<ApiService>();
-
-  Future<List<Dish>> getDishes() async {
+  Future<List<DishModel>> getDishes() async {
+    final apiService = locator<ApiService>();
     final response =
         await apiService.getAll(AppUrl.dishesEndpoint).then((value) {
-      return value.map((e) => Dish.fromJson(e)).toList();
+      return value.map((e) => DishModel.fromJson(e)).toList();
     }).catchError((e) {
       throw e.message;
     });
     return response;
   }
 
-  Future<Dish> getDishById(String id) async {
+  Future<DishModel> getDishById(String id) async {
+    final apiService = locator<ApiService>();
     final response =
         await apiService.getById(id, AppUrl.dishesEndpoint).then((value) {
-      return Dish.fromJson(value);
+      return DishModel.fromJson(value);
     }).catchError((e) {
       throw e.message;
     });
     return response;
   }
 
-  Future<void> saveDish(Dish dish) async {
-    await apiService.save(dish.toJson(), AppUrl.dishesEndpoint).then((value) {
+  Future<dynamic> saveDish(DishModel dish) async {
+    final apiService = locator<ApiService>();
+    return await apiService
+        .save(dish.toJson(), AppUrl.dishesEndpoint)
+        .then((value) {
       return value;
     }).catchError((e) {
       throw e.message;
     });
   }
 
-  Future<void> updateDish(Dish dish) async {
+  Future<void> updateDish(DishModel dish) async {
+    final apiService = locator<ApiService>();
     await apiService.update(dish.toJson(), AppUrl.dishesEndpoint).then((value) {
       return value;
     }).catchError((e) {
@@ -43,6 +47,7 @@ class DishRepository {
   }
 
   Future<void> deleteDish(String id) async {
+    final apiService = locator<ApiService>();
     await apiService.delete(id, AppUrl.dishesEndpoint).then((value) {
       return value;
     }).catchError((e) {

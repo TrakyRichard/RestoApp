@@ -15,7 +15,7 @@ class InputField extends StatefulWidget {
   final String? Function(String?)? validator;
   final void Function(String)? onFieldSubmitted;
   final TextInputAction? textInputAction;
-  final int? maxlines;
+  final int? maxLines;
   final int? minLines;
 
   const InputField(
@@ -23,7 +23,7 @@ class InputField extends StatefulWidget {
       required this.title,
       required this.hint,
       required this.icon,
-      this.maxlines,
+      this.maxLines,
       this.minLines,
       this.validator,
       this.obscureText,
@@ -46,7 +46,6 @@ class _InputFieldState extends State<InputField> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
       child: Center(
@@ -58,7 +57,7 @@ class _InputFieldState extends State<InputField> {
           onChanged: widget.onChanged,
           textInputAction: widget.textInputAction ?? TextInputAction.send,
           minLines: widget.minLines ?? 1,
-          maxLines: widget.maxlines ?? 1,
+          maxLines: widget.maxLines ?? 1,
           readOnly: widget.readOnly ?? false,
           onFieldSubmitted: widget.onFieldSubmitted,
           decoration: InputDecoration(

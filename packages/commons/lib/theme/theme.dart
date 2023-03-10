@@ -14,7 +14,13 @@ ThemeData lightTheme() {
     //fontFamily: "Muli",
     fontFamily: Platform.isIOS ? "Muli" : "Gotham",
     appBarTheme: lightAppBarTheme(),
-    textTheme: textTheme(),
+    textTheme: textTheme().copyWith(
+      bodyLarge: textTheme().bodyLarge!.copyWith(fontWeight: FontWeight.w600),
+      bodyMedium: textTheme().bodyMedium!.copyWith(fontWeight: FontWeight.w600),
+      headlineSmall:
+          textTheme().headlineSmall!.copyWith(fontWeight: FontWeight.w700),
+      titleLarge: textTheme().titleLarge!.copyWith(fontWeight: FontWeight.w600),
+    ),
     brightness: Brightness.light,
     inputDecorationTheme: inputDecorationThemeUnderline(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -23,6 +29,8 @@ ThemeData lightTheme() {
     primaryColorDark: kPrimaryDarkColor,
     cardColor: cardColor,
     cardTheme: cardTheme(),
+    disabledColor: kSecondaryColor,
+
     sliderTheme: const SliderThemeData().copyWith(
       activeTrackColor: kPrimaryDarkColor,
       inactiveTrackColor: kPrimaryLightColor.withOpacity(0.7),
@@ -121,8 +129,10 @@ ThemeData darkTheme() {
       bodyMedium: textTheme().bodyMedium!.copyWith(
             color: Colors.white70,
           ),
-      headlineSmall: const TextStyle(color: Colors.white70),
-      titleLarge: const TextStyle(color: Colors.white70),
+      headlineSmall: textTheme().headlineSmall!.copyWith(color: Colors.white70),
+      titleLarge: textTheme()
+          .titleLarge!
+          .copyWith(color: Colors.white70, fontWeight: FontWeight.bold),
     ),
     appBarTheme: lightAppBarTheme().copyWith(
       color: Colors.white70, // const Color(0XFF212121), // Colors.black87,
@@ -130,7 +140,7 @@ ThemeData darkTheme() {
     ),
     dialogTheme: const DialogTheme().copyWith(
       backgroundColor: Colors.grey[850],
-      titleTextStyle: const TextStyle(color: Colors.white70),
+      titleTextStyle: TextStyle(color: Colors.white70),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData()
         .copyWith(backgroundColor: Colors.grey[900]),

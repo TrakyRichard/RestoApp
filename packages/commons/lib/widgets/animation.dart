@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class AnimatedRoute extends PageRouteBuilder {
   final Widget widget;
@@ -17,4 +18,20 @@ class AnimatedRoute extends PageRouteBuilder {
             );
           },
         );
+}
+
+EasyLoading customAnimation(ThemeData theme) {
+  return EasyLoading.instance
+    ..displayDuration = const Duration(milliseconds: 2000)
+    ..indicatorType = EasyLoadingIndicatorType.cubeGrid
+    ..loadingStyle = EasyLoadingStyle.dark
+    ..indicatorSize = 45.0
+    ..radius = 10.0
+    ..progressColor = theme.colorScheme.primary
+    ..backgroundColor = theme.cardColor
+    ..indicatorColor = theme.primaryColor
+    ..textColor = theme.colorScheme.primary
+    ..userInteractions = true
+    ..dismissOnTap = false
+    ..customAnimation;
 }

@@ -8,7 +8,7 @@ Dio.Dio dio() {
 
 class ApiService extends CrudDAS {
   @override
-  Future<void> delete(String id, String endpoint) {
+  Future<dynamic> delete(String id, String endpoint) {
     dio().delete(endpoint).then((value) {
       return value;
     }).catchError((e) {
@@ -38,8 +38,8 @@ class ApiService extends CrudDAS {
   }
 
   @override
-  Future<void> save(Map<String, dynamic> data, String endpoint) async {
-    await dio().post(endpoint, data: data).then((value) {
+  Future<dynamic> save(Map<String, dynamic> data, String endpoint) async {
+    return await dio().put(endpoint, data: data).then((value) {
       return value;
     }).catchError((e) {
       throw e.message;
@@ -47,7 +47,7 @@ class ApiService extends CrudDAS {
   }
 
   @override
-  Future<void> update(Map<String, dynamic> data, String endpoint) async {
+  Future<dynamic> update(Map<String, dynamic> data, String endpoint) async {
     await dio().put(endpoint, data: data).then((value) {
       return value;
     }).catchError((e) {

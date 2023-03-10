@@ -5,21 +5,21 @@ abstract class DishEvent {}
 class LoadDishesEvent extends DishEvent {}
 
 class AddDishEvent extends DishEvent {
-  final Dish dish;
+  final DishModel dish;
 
-  AddDishEvent(this.dish);
+  AddDishEvent({required this.dish});
 }
 
 class UpdateDishEvent extends DishEvent {
-  final Dish dish;
+  final DishModel dish;
 
-  UpdateDishEvent(this.dish);
+  UpdateDishEvent({required this.dish});
 }
 
 class DeleteDishEvent extends DishEvent {
   final String id;
 
-  DeleteDishEvent(this.id);
+  DeleteDishEvent({required this.id});
 }
 
 class SearchDishEvent extends DishEvent {
@@ -31,41 +31,41 @@ class SearchDishEvent extends DishEvent {
 class FilterDishEvent extends DishEvent {
   final String category;
 
-  FilterDishEvent(this.category);
+  FilterDishEvent({required this.category});
 }
 
 class SortDishEvent extends DishEvent {
   final String field;
 
-  SortDishEvent(this.field);
+  SortDishEvent({required this.field});
 }
 
 class LoadDishByCategoryEvent extends DishEvent {
   final String category;
 
-  LoadDishByCategoryEvent(this.category);
+  LoadDishByCategoryEvent({required this.category});
 }
 
 class LoadDishByStatusEvent extends DishEvent {
   final String status;
 
-  LoadDishByStatusEvent(this.status);
+  LoadDishByStatusEvent({required this.status});
 }
 
 class LoadDishByFeaturedEvent extends DishEvent {
   final String featured;
 
-  LoadDishByFeaturedEvent(this.featured);
+  LoadDishByFeaturedEvent({required this.featured});
 }
 
 class LoadDishByLabelEvent extends DishEvent {
   final String label;
 
-  LoadDishByLabelEvent(this.label);
+  LoadDishByLabelEvent({required this.label});
 }
 
 class LoadDishByTimeToWaitEvent extends DishEvent {
   final String timeToWait;
 
-  LoadDishByTimeToWaitEvent(this.timeToWait);
+  LoadDishByTimeToWaitEvent({required this.timeToWait});
 }

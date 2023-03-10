@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ElevatedButton elevatedButton(
     {required Function() onPressed,
@@ -10,18 +11,18 @@ ElevatedButton elevatedButton(
       style: isOutlined ?? false
           ? ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
-                  const Color.fromARGB(255, 188, 206, 213)))
+                  theme.disabledColor.withOpacity(0.5)))
           : ButtonStyle(
               backgroundColor: MaterialStateProperty.all(theme.primaryColor)),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
-        height: 40.0,
+        height: 40.0.h,
         child: Center(
             child: Text(
           label,
           style: theme.textTheme.bodySmall?.copyWith(
               color: isOutlined ?? false ? theme.primaryColor : theme.cardColor,
-              fontSize: 14.0,
+              fontSize: 14.0.h,
               fontWeight: FontWeight.w600),
         )),
       ));
@@ -57,22 +58,23 @@ class IconBtn extends StatelessWidget {
   }
 }
 
-ElevatedButton iconButton(
+IconButton iconButton(
     {required Function() onPressed,
     required IconData icon,
     required Color activeColor,
     required Color inactiveColor,
     bool? isActive}) {
-  return ElevatedButton(
+  return IconButton(
       onPressed: onPressed,
       style: ButtonStyle(
+          alignment: Alignment.center,
           backgroundColor: MaterialStateProperty.all(
               isActive ?? false ? activeColor : inactiveColor)),
-      child: SizedBox(
-        width: double.infinity,
-        height: 40.0,
-        child: Center(
-            child: Icon(icon,
-                color: isActive ?? false ? inactiveColor : activeColor)),
+      icon: Container(
+        alignment: Alignment.center,
+        child: Icon(
+          icon,
+          color: isActive ?? false ? inactiveColor : activeColor,
+        ),
       ));
 }

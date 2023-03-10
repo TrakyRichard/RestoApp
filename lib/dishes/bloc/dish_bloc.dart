@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:restaurant/locator.dart';
 
 import '../dishes.dart';
 
@@ -9,7 +11,7 @@ part 'dish_event.dart';
 part 'dish_state.dart';
 
 class DishBloc extends Bloc<DishEvent, DishState> {
-  final DishRepository dishRepository = DishRepository();
+  final DishRepository dishRepository = locator<DishRepository>();
   DishBloc() : super(const DishState(dishes: [], isLoading: false, error: "")) {
     on<DishEvent>((event, emit) {});
     on<LoadDishesEvent>(_loadDish);
@@ -32,10 +34,15 @@ class DishBloc extends Bloc<DishEvent, DishState> {
     }
   }
 
-  FutureOr<void> _addDish(AddDishEvent event, Emitter<DishState> emit) {
+  FutureOr<void> _addDish(AddDishEvent event, Emitter<DishState> emit) async {
     emit(state.copyWith(isLoading: true));
     try {
-      dishRepository.saveDish(event.dish);
+      final response = await dishRepository.saveDish(event.dish);
+      if (response.data["status"] == "OK") {
+        EasyLoading.showSuccess("Dish added successfully");
+      } else {
+        EasyLoading.showError(response["message"]);
+      }
       emit(state.copyWith(isLoading: false));
     } catch (e) {
       emit(state.copyWith(error: e.toString(), isLoading: false));

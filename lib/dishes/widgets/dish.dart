@@ -20,7 +20,7 @@ class DishWidget extends StatelessWidget {
       child: Hero(
         tag: dish.id,
         child: Container(
-          margin: EdgeInsets.only(right: 10.w),
+          margin: EdgeInsets.only(right: 18.w),
           width: 150.w,
           height: 150.h,
           alignment: Alignment.center,

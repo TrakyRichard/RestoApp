@@ -10,7 +10,10 @@ class ApiService extends CrudDAS {
   @override
   Future<dynamic> delete(String id, String endpoint) {
     dio().delete(endpoint).then((value) {
-      return value;
+      if (value.data["status"] == "OK" && value.data["data"] != null) {
+        return value.data["data"];
+      }
+      throw value.data["message"];
     }).catchError((e) {
       throw e.message;
     });
@@ -18,29 +21,36 @@ class ApiService extends CrudDAS {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getAll(String endpoint) async {
-    final response = await dio().get(endpoint).then((value) {
-      return value.data;
+  Future<dynamic> getAll(String endpoint) async {
+    return await dio().get(endpoint).then((value) {
+      if (value.data["status"] == "OK" && value.data["data"] != null) {
+        return value.data["data"];
+      }
+      throw value.data["message"];
     }).catchError((e) {
       throw e.message;
     });
-    return response;
   }
 
   @override
   Future<Map<String, dynamic>> getById(String id, String endpoint) async {
-    final response = await dio().get("$endpoint/$id").then((value) {
-      return value.data;
+    return await dio().get("$endpoint/$id").then((value) {
+      if (value.data["status"] == "OK" && value.data["data"] != null) {
+        return value.data["data"];
+      }
+      throw value.data["message"];
     }).catchError((e) {
       throw e.message;
     });
-    return response;
   }
 
   @override
   Future<dynamic> save(Map<String, dynamic> data, String endpoint) async {
     return await dio().put(endpoint, data: data).then((value) {
-      return value;
+      if (value.data["status"] == "OK" && value.data["data"] != null) {
+        return value.data["data"];
+      }
+      throw value.data["message"];
     }).catchError((e) {
       throw e.message;
     });
@@ -48,8 +58,11 @@ class ApiService extends CrudDAS {
 
   @override
   Future<dynamic> update(Map<String, dynamic> data, String endpoint) async {
-    await dio().put(endpoint, data: data).then((value) {
-      return value;
+    return await dio().put(endpoint, data: data).then((value) {
+      if (value.data["status"] == "OK" && value.data["data"] != null) {
+        return value.data["data"];
+      }
+      throw value.data["message"];
     }).catchError((e) {
       throw e.message;
     });

@@ -2,18 +2,15 @@ import '../models/welcome.dart';
 
 List<WelcomeModel> onBoardingSteps = [
   WelcomeModel(
-      title: 'Que c\'est beau de sauver une vie',
-      description:
-          'Nous sommes là pour vous et pour vous aider à sauver la vie de nos soeur nos mères nos pères et nos fils et fille',
+      title: 'your favorite dish',
+      description: 'Choose from thousands of restaurants near you',
       svg: 'assets/svgs/cooking.svg'),
   WelcomeModel(
-      title: 'Que c\'est beau de sauver une vie',
-      description:
-          'Nous sommes là pour vous et pour vous aider à sauver la vie de nos soeur nos mères nos pères et nos fils et fille',
+      title: 'Order and enjoy',
+      description: 'We take care of your food, while you enjoy your time.',
       svg: 'assets/svgs/cooking.svg'),
   WelcomeModel(
-      title: 'Que c\'est beau de sauver une vie',
-      description:
-          'Nous sommes là pour vous et pour vous aider à sauver la vie de nos soeur nos mères nos pères et nos fils et fille',
+      title: 'Have a nice day',
+      description: 'We hope you enjoy our services',
       svg: 'assets/svgs/cooking.svg'),
 ];

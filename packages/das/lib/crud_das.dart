@@ -3,7 +3,7 @@ abstract class CrudDAS {
 
   Future<dynamic> delete(String id, String endpoint);
 
-  Future<List<Map<String, dynamic>>> getAll(String endpoint);
+  Future<dynamic> getAll(String endpoint);
 
   Future<Map<String, dynamic>> getById(String id, String endpoint);
 

@@ -30,6 +30,15 @@ router.get("/dishes/clear", (req, res) => {
   });
 });
 
+// get dish by category
+router.get("/dishes/categories/:cat", (req, res) => {
+  const dishes = _dishes.filter((x) => x.category === req.params.cat);
+  res.json({
+    status: "OK",
+    data: dishes,
+  });
+});
+
 // get dish by id
 router.get("/dishes/:_id", (req, res) => {
   const dish = _dishes.find((x) => x._id === req.params._id);

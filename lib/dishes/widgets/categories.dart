@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant/dishes/dishes.dart';
 
 class Categories extends StatefulWidget {
-  final List<String> categories;
+  final List<CategoryModel> categories;
   const Categories({super.key, required this.categories});
 
   @override
@@ -28,7 +28,9 @@ class _CategoriesState extends State<Categories> {
               scrollDirection: Axis.horizontal,
               itemCount: widget.categories.length,
               itemBuilder: (context, index) {
-                return Category(name: widget.categories[index]);
+                return Category(
+                  category: widget.categories[index],
+                );
               },
             ),
           ),

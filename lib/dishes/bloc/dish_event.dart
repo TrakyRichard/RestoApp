@@ -22,6 +22,12 @@ class DeleteDishEvent extends DishEvent {
   DeleteDishEvent({required this.id});
 }
 
+class LoadDishByIdEvent extends DishEvent {
+  final String id;
+
+  LoadDishByIdEvent({required this.id});
+}
+
 class SearchDishEvent extends DishEvent {
   final String query;
 
@@ -40,10 +46,16 @@ class SortDishEvent extends DishEvent {
   SortDishEvent({required this.field});
 }
 
-class LoadDishByCategoryEvent extends DishEvent {
-  final String category;
+class ChangeCategoryEvent extends DishEvent {
+  final CategoryEnum category;
 
-  LoadDishByCategoryEvent({required this.category});
+  ChangeCategoryEvent({required this.category});
+}
+
+class LoadDishesByCategoryEvent extends DishEvent {
+  final CategoryEnum category;
+
+  LoadDishesByCategoryEvent({required this.category});
 }
 
 class LoadDishByStatusEvent extends DishEvent {

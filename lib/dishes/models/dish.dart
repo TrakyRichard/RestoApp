@@ -41,13 +41,13 @@ class DishModel {
 }
 
 enum CategoryEnum {
-  @JsonValue('MainCourse')
+  @JsonValue('CategoryEnum.mainCourse')
   mainCourse,
-  @JsonValue('Appetizers')
+  @JsonValue('CategoryEnum.appetizers')
   appetizers,
-  @JsonValue('Desserts')
+  @JsonValue('CategoryEnum.desserts')
   desserts,
-  @JsonValue('additionalDishes')
+  @JsonValue('CategoryEnum.additionalDishes')
   additionalDishes,
 }
 

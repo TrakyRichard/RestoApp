@@ -42,8 +42,8 @@ Map<String, dynamic> _$DishModelToJson(DishModel instance) => <String, dynamic>{
     };
 
 const _$CategoryEnumEnumMap = {
-  CategoryEnum.mainCourse: 'MainCourse',
-  CategoryEnum.appetizers: 'Appetizers',
-  CategoryEnum.desserts: 'Desserts',
-  CategoryEnum.additionalDishes: 'additionalDishes',
+  CategoryEnum.mainCourse: 'CategoryEnum.mainCourse',
+  CategoryEnum.appetizers: 'CategoryEnum.appetizers',
+  CategoryEnum.desserts: 'CategoryEnum.desserts',
+  CategoryEnum.additionalDishes: 'CategoryEnum.additionalDishes',
 };

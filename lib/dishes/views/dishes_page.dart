@@ -1,5 +1,6 @@
 import 'package:commons/commons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant/locator.dart';
 
@@ -25,10 +26,11 @@ class _DishesPageState extends State<DishesPage> {
             SizedBox(height: 20.sp),
             Categories(
                 categories: CategoryEnum.values
-                    .map((cat) => mapCategoryStatusToString(cat))
+                    .map((cat) => CategoryModel(
+                        name: mapCategoryStatusToString(cat), key: cat))
                     .toList()),
             SizedBox(height: 10.sp),
-            HorizontalDishes(dishes: mock),
+            const HorizontalDishes(),
           ],
         ),
       ),

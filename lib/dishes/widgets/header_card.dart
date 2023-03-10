@@ -50,18 +50,6 @@ class _HeaderCardState extends State<HeaderCard> {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  SizedBox(
-                    height: 35.h,
-                    width: 100.w,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.r),
-                      child: elevatedButton(
-                          onPressed: () {},
-                          label: "Create",
-                          theme: theme,
-                          isOutlined: false),
-                    ),
-                  ),
                 ],
               ),
             ),
